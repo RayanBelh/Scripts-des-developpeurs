@@ -173,7 +173,7 @@ Dans la BD nous remarquons la création de la table SQL comme suit :
 ![image](https://github.com/user-attachments/assets/3a6e0c5f-916c-46ac-8d27-f4f9dfc4954c)
 
 - Sur l'application java nous remarquons après l"exécution ce qui suit :
-- 
+ 
 ![image](https://github.com/user-attachments/assets/9a6d1854-f9af-4be0-b6e8-c8f2a153de37)
 
 - Nous pouvons remarquer la présence des nombres de scripts réalisés par chaque developpeurs ainsi que le nombre totale des scripts réalisés.
