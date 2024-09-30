@@ -42,5 +42,51 @@ public static void afficherMaxScriptsParJour(Connection connection) throws SQLEx
 ```
 
 2. **afficherPersonnesOrdreDecroissant** : Affiche la liste des développeurs triée par ordre décroissant selon le nombre total de scripts réalisés.
+```java
+public static void afficherPersonnesOrdreDecroissant(Connection connection) throws SQLException {
+        Statement statement = connection.createStatement();
+        String query = "SELECT Developpeurs, SUM(NbrScripts) AS TotalScripts " +
+                       "FROM DevData " +
+                       "GROUP BY Developpeurs " +
+                       "ORDER BY TotalScripts DESC";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        System.out.println("**Liste des développeurs par nombre décroissant de scripts :**");
+        System.out.println("------------------------------");
+        while (resultSet.next()) {
+            String developpeur = resultSet.getString("Developpeurs");
+            int totalScripts = resultSet.getInt("TotalScripts");
+            System.out.println(developpeur + " a réalisé " + totalScripts + " scripts au total.");
+        }
+        System.out.println("------------------------------");
+    }
+```
+
 3. **calculerTotalScripts** : Calcule le nombre total de scripts réalisés durant la semaine.
+```java
+ public static void calculerTotalScripts(Connection connection) throws SQLException {
+        Statement statement = connection.createStatement();
+        String query = "SELECT SUM(NbrScripts) AS TotalScripts FROM DevData";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if (resultSet.next()) {
+            int totalScripts = resultSet.getInt("TotalScripts");
+            System.out.println("**Nombre total de scripts réalisés en une semaine : " + totalScripts);
+        }
+    }
+```
 4. **calculerTotalScriptsParProgrammeur** : Calcule et affiche le nombre total de scripts réalisés par un développeur donné.
+```java
+public static void calculerTotalScriptsParProgrammeur(Connection connection, String developpeur) throws SQLException {
+        Statement statement = connection.createStatement();
+        String query = "SELECT SUM(NbrScripts) AS TotalScripts " +
+                       "FROM DevData " +
+                       "WHERE Developpeurs = '" + developpeur + "'";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if (resultSet.next()) {
+            int totalScripts = resultSet.getInt("TotalScripts");
+            System.out.println("**Nombre total de scripts réalisés par " + developpeur + " : " + totalScripts);
+        }
+    }
+```
