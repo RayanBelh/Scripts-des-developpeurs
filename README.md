@@ -21,6 +21,44 @@ L'application fournit également des méthodes pour afficher des statistiques ba
 Voici les statistiques disponibles :
 
 1. **afficherMaxScriptsParJour** : Affiche le développeur ayant réalisé le maximum de scripts par jour.
+2. **afficherPersonnesOrdreDecroissant** : Affiche la liste des développeurs triée par ordre décroissant selon le nombre total de scripts réalisés.
+3. **calculerTotalScripts** : Calcule le nombre total de scripts réalisés durant la semaine.
+4. **calculerTotalScriptsParProgrammeur** : Calcule et affiche le nombre total de scripts réalisés par un développeur donné.
+
+### 4. Méthode `executerRequete`
+La méthode **executerRequete** permet à l'utilisateur d'entrer et d'exécuter une requête SQL via la console. Cette méthode affiche les résultats de la requête ainsi que les métadonnées des colonnes du résultat (noms, types de colonnes, etc.). Si la requête entraîne des modifications dans la base de données, elle affiche également le nombre de lignes modifiées.
+
+## Fonctionnement
+### 1. Lancer l'application
+Pour démarrer l'application, exécutez le fichier `DriveManager.java`. L'application se connecte à une base de données MySQL sur `localhost` à l'aide des identifiants suivants :
+- **URL** : `jdbc:mysql://localhost:3306/jdbc`
+- **Nom d'utilisateur** : `root`
+- **Mot de passe** : (laissez vide)
+### 2. Création de la table et insertion des données
+Si la table `DevData` n'existe pas, elle est créée et les données sont insérées automatiquement et remplies comme suit :
+
+```java
+ private static void createTableAndInsertDataIfNotExists(Connection connection) {
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS DevData ("
+                + "Developpeurs VARCHAR(32), "
+                + "Jour CHAR(11), "
+                + "NbrScripts INTEGER)";
+ String insertDataSQL = "INSERT INTO DevData VALUES "
+                + "('ALAMI', 'Lundi', 1), "
+                + "('WAFI', 'Lundi', 2), "
+                + "('SLAMI', 'Mardi', 9), "
+                + "('SAFI', 'Mardi', 2), "
+                + "('ALAMI', 'Mardi', 2), "
+                + "('SEBIHI', 'Mercredi', 2), "
+                + "('WAFI', 'Jeudi', 3), "
+                + "('ALAOUI', 'Vendredi', 9), "
+                + "('WAFI', 'Vendredi', 3), "
+                + "('SEBIHI', 'Vendredi', 4)";
+```
+### 3. Exécution des statistiques
+Les statistiques prédéfinies sont exécutées automatiquement au lancement du programme :
+
+- **afficherMaxScriptsParJour** : Affiche le développeur ayant réalisé le plus de scripts par jour.
 ```java
 public static void afficherMaxScriptsParJour(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -41,7 +79,7 @@ public static void afficherMaxScriptsParJour(Connection connection) throws SQLEx
 
 ```
 
-2. **afficherPersonnesOrdreDecroissant** : Affiche la liste des développeurs triée par ordre décroissant selon le nombre total de scripts réalisés.
+- **afficherPersonnesOrdreDecroissant** : Affiche les développeurs triés par ordre décroissant du nombre total de scripts réalisés.
 ```java
 public static void afficherPersonnesOrdreDecroissant(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -61,8 +99,7 @@ public static void afficherPersonnesOrdreDecroissant(Connection connection) thro
         System.out.println("------------------------------");
     }
 ```
-
-3. **calculerTotalScripts** : Calcule le nombre total de scripts réalisés durant la semaine.
+- **calculerTotalScripts** : Calcule et affiche le nombre total de scripts réalisés durant la semaine.
 ```java
  public static void calculerTotalScripts(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -75,7 +112,7 @@ public static void afficherPersonnesOrdreDecroissant(Connection connection) thro
         }
     }
 ```
-4. **calculerTotalScriptsParProgrammeur** : Calcule et affiche le nombre total de scripts réalisés par un développeur donné.
+- **calculerTotalScriptsParProgrammeur (pour WAFI)** : Calcule et affiche le nombre total de scripts réalisés par le développeur nommé "WAFI".
 ```java
 public static void calculerTotalScriptsParProgrammeur(Connection connection, String developpeur) throws SQLException {
         Statement statement = connection.createStatement();
@@ -90,3 +127,5 @@ public static void calculerTotalScriptsParProgrammeur(Connection connection, Str
         }
     }
 ```
+
+
