@@ -58,7 +58,7 @@ Si la table `DevData` n'existe pas, elle est créée et les données sont insér
 ### 3. Exécution des statistiques
 Les statistiques prédéfinies sont exécutées automatiquement au lancement du programme :
 
-- **afficherMaxScriptsParJour** : Affiche le développeur ayant réalisé le plus de scripts par jour.
+- **afficherMaxScriptsParJour** : 
 ```java
 public static void afficherMaxScriptsParJour(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -79,7 +79,7 @@ public static void afficherMaxScriptsParJour(Connection connection) throws SQLEx
 
 ```
 
-- **afficherPersonnesOrdreDecroissant** : Affiche les développeurs triés par ordre décroissant du nombre total de scripts réalisés.
+- **afficherPersonnesOrdreDecroissant** : 
 ```java
 public static void afficherPersonnesOrdreDecroissant(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -99,7 +99,7 @@ public static void afficherPersonnesOrdreDecroissant(Connection connection) thro
         System.out.println("------------------------------");
     }
 ```
-- **calculerTotalScripts** : Calcule et affiche le nombre total de scripts réalisés durant la semaine.
+- **calculerTotalScripts** : 
 ```java
  public static void calculerTotalScripts(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -112,7 +112,7 @@ public static void afficherPersonnesOrdreDecroissant(Connection connection) thro
         }
     }
 ```
-- **calculerTotalScriptsParProgrammeur (pour WAFI)** : Calcule et affiche le nombre total de scripts réalisés par le développeur nommé "WAFI".
+- **calculerTotalScriptsParProgrammeur (pour WAFI)** :
 ```java
 public static void calculerTotalScriptsParProgrammeur(Connection connection, String developpeur) throws SQLException {
         Statement statement = connection.createStatement();
@@ -124,6 +124,42 @@ public static void calculerTotalScriptsParProgrammeur(Connection connection, Str
         if (resultSet.next()) {
             int totalScripts = resultSet.getInt("TotalScripts");
             System.out.println("**Nombre total de scripts réalisés par " + developpeur + " : " + totalScripts);
+        }
+    }
+```
+- **executerRequete** :
+```java
+public static void executerRequete(Connection connection, String requete) throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            boolean isResultSet = true; 
+            try (ResultSet resultSet = statement.executeQuery(requete)) {
+              
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                System.out.println("Méta-informations : ");
+                System.out.println("--------------------");
+                System.out.println("Nombre de colonnes: " + columnCount);
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.println("Colonne " + i + ": " + metaData.getColumnName(i) + " (" + metaData.getColumnTypeName(i) + ")");
+                }
+                System.out.println("--------------------");
+                System.out.println("\nDonnées : ");
+                System.out.println("--------------------");
+                while (resultSet.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.print(resultSet.getString(i) + " | ");
+                    }
+                    System.out.println();
+                }
+                System.out.println("--------------------");
+            } catch (SQLException e) {
+                isResultSet = false;
+                System.err.println("Erreur lors de l'exécution de la requête : " + e.getMessage());
+            }
+            if (!isResultSet) {
+                int rowsAffected = statement.getUpdateCount();
+                System.out.println("Nombre de lignes modifiées : " + rowsAffected);
+            }
         }
     }
 ```
