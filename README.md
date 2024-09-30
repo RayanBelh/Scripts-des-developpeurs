@@ -21,7 +21,8 @@ L'application fournit également des méthodes pour afficher des statistiques ba
 Voici les statistiques disponibles :
 
 1. **afficherMaxScriptsParJour** : Affiche le développeur ayant réalisé le maximum de scripts par jour.
-` public static void afficherMaxScriptsParJour(Connection connection) throws SQLException {
+
+`public static void afficherMaxScriptsParJour(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
         String query = "SELECT Developpeurs, SUM(NbrScripts) AS MaxScripts " +
                        "FROM DevData " +
