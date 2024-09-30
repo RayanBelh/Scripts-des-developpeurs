@@ -1,4 +1,7 @@
-# Scripts-des-developpeurs
+# Projet JDBC - Gestion des Scripts des Développeurs
+
+Ce projet utilise **JDBC** pour se connecter à une base de données MySQL et effectuer diverses opérations, notamment la création d'une table, l'insertion de données, l'exécution de requêtes SQL et l'affichage de statistiques sur les développeurs et les scripts qu'ils ont réalisés.
+
 ### **1. Création de la table `DevData`**
 
 La table **DevData** stocke des informations sur :
@@ -171,6 +174,9 @@ public static void executerRequete(Connection connection, String requete) throws
 ![image](https://github.com/user-attachments/assets/6b7b0cd9-f19c-4816-ab22-5673364dc753)
 
 - Nous remarquons l'affichage des developpeurs ainsi que le nombre de scripts réalisés par jour.
+
+# Conclusion
+- Ce projet illustre l'utilisation de JDBC pour interagir avec une base de données MySQL. Il comprend la création de tables, l'insertion de données, l'exécution de requêtes SQL (via la méthode executerRequete), la gestion des erreurs et l'affichage des résultats avec méta-informations.
 
 
 
