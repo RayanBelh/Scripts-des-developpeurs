@@ -167,7 +167,9 @@ public static void executerRequete(Connection connection, String requete) throws
 ![image](https://github.com/user-attachments/assets/9a6d1854-f9af-4be0-b6e8-c8f2a153de37)
 - Voici ce qu'affiche le programme, nous pouvons remarquer la présence des nombres de scripts réalisés par chaque developpeurs ainsi que le nombre totale des scripts réalisés.
 - A la dernière ligne, nous remarquons un message comme suit : **Entrez une requête SQL : ** . Nous allons taper la commande suivante : **SELECT*FROM DevData ** . Voici ce qui apparait :
+
 ![image](https://github.com/user-attachments/assets/6b7b0cd9-f19c-4816-ab22-5673364dc753)
+
 - Nous remarquons l'affichage des developpeurs ainsi que le nombre de scripts réalisés par jour.
 
 
