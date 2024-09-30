@@ -127,5 +127,7 @@ public static void calculerTotalScriptsParProgrammeur(Connection connection, Str
         }
     }
 ```
+## Affichage 
+
 
 
