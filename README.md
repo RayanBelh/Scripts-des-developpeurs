@@ -163,7 +163,12 @@ public static void executerRequete(Connection connection, String requete) throws
         }
     }
 ```
-## Affichage 
+### Captures d'écran
+# 1. Fenêtre de l'application
+
+# 2. Exécution d'une requête SQL
+
+# 3. Affichage des statistiques
 
 
 
