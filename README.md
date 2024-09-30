@@ -163,12 +163,11 @@ public static void executerRequete(Connection connection, String requete) throws
         }
     }
 ```
-### Captures d'écran
-# 1. Fenêtre de l'application
+## Affichage du résultat après exécution : 
+![image](https://github.com/user-attachments/assets/9a6d1854-f9af-4be0-b6e8-c8f2a153de37)
 
-# 2. Exécution d'une requête SQL
 
-# 3. Affichage des statistiques
+
 
 
 
