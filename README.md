@@ -28,7 +28,6 @@ Voici les statistiques disponibles :
                        "GROUP BY Developpeurs " + 
                        "ORDER BY MaxScripts DESC";
         ResultSet resultSet = statement.executeQuery(query);
-
         System.out.println("**Personne ayant réalisé le plus de scripts par jour :**");
         System.out.println("------------------------------");
         while (resultSet.next()) {
