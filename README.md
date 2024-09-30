@@ -186,6 +186,9 @@ Dans la BD nous remarquons la création de la table SQL comme suit :
 # Conclusion
 - Ce projet illustre l'utilisation de JDBC pour interagir avec une base de données MySQL. Il comprend la création de tables, l'insertion de données, l'exécution de requêtes SQL (via la méthode executerRequete), la gestion des erreurs et l'affichage des résultats avec méta-informations.
 
+# Video démonstrative :
+
+https://github.com/user-attachments/assets/a09063a2-7f20-4d07-a96f-4c51da834c9d
 
 
 
